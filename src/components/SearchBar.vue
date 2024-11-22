@@ -14,10 +14,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-// Lokaler Zustand für die Eingabe
 const searchQuery = ref('');
-
-// Suchlogik (wird derzeit nur simuliert)
 const handleSearch = () => {
   console.log('Suchanfrage:', searchQuery.value);
 };
@@ -27,21 +24,21 @@ const handleSearch = () => {
 .search-bar {
   display: flex;
   align-items: center;
-  background-color: #444;
+  background-color: var(--main-theme-gray-50);
   padding: 0.5em 1em;
   border-radius: 8px;
   transition: background-color 0.3s ease;
-  color: white;
+  color: var(--neutral-white);
 }
 
 .search-bar:hover {
-  background-color: #666;
+  background-color: var(--main-theme-gray-30);
 }
 
 .search-input {
   border: none;
   background: none;
-  color: white;
+  color: var(--neutral-white);
   flex: 1;
   margin-right: 0.5em;
   font-size: 1rem;
@@ -54,7 +51,6 @@ const handleSearch = () => {
 }
 
 ::placeholder {
-  color: white;
-  opacity: 0.7;
+  color: var(--main-theme-gray-20);
 }
 </style>

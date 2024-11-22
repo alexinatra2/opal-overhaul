@@ -16,23 +16,20 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-// Liste der Tabs
+// Tabs-Daten
 const tabs = ['Kurs 1', 'Kurs 2', 'Kurs 3', 'Kurs 4'];
 
-// Aktuell ausgewählter Tab
+// Aktiver Tab-Zustand
 const activeTab = ref(0);
 
-// Hover-Zustand
-const hoveredTab = ref(-1);
-
-// Tab auswählen
+// Funktion: Tab auswählen
 const selectTab = (index: number) => {
   activeTab.value = index;
 };
 
-// Hover-Effekt
+// Funktion: Hover-Effekt
 const hoverTab = (index: number) => {
-  hoveredTab.value = index;
+  console.log(`Hovering over tab: ${index}`);
 };
 </script>
 
@@ -40,11 +37,11 @@ const hoverTab = (index: number) => {
 .tabs {
   display: flex;
   align-items: center;
-  gap: 4em;
+  gap: 2em;
 }
 
 .tab {
-  color: #888; /* Grau für inaktive Tabs */
+  color: var(--main-theme-gray-50);
   cursor: pointer;
   font-size: 1.25em;
   transition: color 0.3s ease;
@@ -52,6 +49,6 @@ const hoverTab = (index: number) => {
 
 .tab:hover,
 .tab.active {
-  color: #00b1d9;
+  color: var(--main-theme-color-50);
 }
 </style>

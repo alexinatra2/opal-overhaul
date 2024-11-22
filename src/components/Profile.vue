@@ -1,15 +1,10 @@
 <template>
   <div class="profile" @click="goToProfile">
-    <!-- Profilbild -->
-    <img
-        src="/profile.png"
-        class="profile-icon"
-    />
+    <img src="/profile.png" alt="Profil" class="profile-icon" />
   </div>
 </template>
 
 <script setup lang="ts">
-// Noch nicht implementiert: Navigation zum Profil
 const goToProfile = () => {
   console.log("Zum Profil navigieren");
 };
@@ -20,23 +15,24 @@ const goToProfile = () => {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px; /* Breite des Profilsymbols */
-  height: 40px; /* Höhe des Profilsymbols */
-  border-radius: 50%; /* Rundes Symbol */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
   cursor: pointer;
-  background-color: #ffffff;
-  transition: background-color 0.3s ease;
-  overflow: hidden; /* Verhindert Überlauf außerhalb des Kreises */
-  border: 2px solid #fff; /* Weißer Rand um das Profil */
+  background-color: var(--main-theme-gray-20);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  overflow: hidden;
+  border: 2px solid var(--neutral-white);
 }
 
 .profile:hover {
-  border-color: #00b1d9; /* Hintergrundfarbe bei Hover */
+  border-color: var(--main-theme-color-40);
+  background-color: var(--main-theme-gray-10);
 }
 
 .profile-icon {
-  width: 100%; /* Bild passt in den Kreis */
+  width: 100%;
   height: 100%;
-  object-fit: cover; /* Zuschneiden für sauberes Einpassen */
+  object-fit: cover;
 }
 </style>
