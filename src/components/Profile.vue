@@ -1,6 +1,6 @@
 <template>
   <div class="profile" @click="goToProfile">
-    <img src="/profile.png" alt="Profil" class="profile-icon" />
+    <img src="/src/assets/profile.png" alt="Profil" class="profile-icon" />
   </div>
 </template>
 

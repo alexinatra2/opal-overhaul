@@ -7,7 +7,7 @@
         class="search-input"
         @input="handleSearch"
     />
-    <span class="search-icon">🔍</span>
+    <span class="search-icon">🔍</span> <!-- SVG: Lupe anstatt icon -->
   </div>
 </template>
 

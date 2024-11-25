@@ -1,73 +1,30 @@
 <script setup lang="ts">
-import SearchBar from './components/SearchBar.vue';
-import Tabs from './components/Tabs.vue';
-import Profile from './components/Profile.vue';
+import HelloWorld from './components/HelloWorld.vue'
 </script>
-
-<!-- TODO images in src/assets oder in publuic? -->
 
 <template>
   <div>
-    <header class="header">
-      <div class="header-content">
-        <div class="left-group">
-          <img src="./assets/logo.png" alt="Logo" class="logo" />
-          <Tabs />
-        </div>
-        <div class="right-group">
-          <SearchBar />
-          <Profile />
-        </div>
-      </div>
-    </header>
-    <main>
-    </main>
+    <a href="https://vite.dev" target="_blank">
+      <img src="/vite.svg" class="logo" alt="Vite logo" />
+    </a>
+    <a href="https://vuejs.org/" target="_blank">
+      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
+    </a>
   </div>
+  <HelloWorld msg="Vite + Vue" />
 </template>
 
 <style scoped>
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  background-color: var(--background-dark);
-}
-
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5em 2em;
-  color: var(--text-dark);
-}
-
-.left-group {
-  display: flex;
-  align-items: center;
-  gap: 2em;
-}
-
-.right-group {
-  display: flex;
-  align-items: center;
-  gap: 1em;
-}
-
 .logo {
-  height: 100%;
-  max-height: 50px;
-  width: auto;
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
   transition: filter 300ms;
 }
-
 .logo:hover {
-  filter: drop-shadow(0 0 2em var(--main-theme-color-40));
+  filter: drop-shadow(0 0 2em #646cffaa);
 }
-
-main {
-  padding: 4em 2em;
+.logo.vue:hover {
+  filter: drop-shadow(0 0 2em #42b883aa);
 }
 </style>
