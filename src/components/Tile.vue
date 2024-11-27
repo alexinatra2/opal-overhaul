@@ -25,7 +25,8 @@ export default {
 
 <style scoped>
 .tile {
-  justify-content: flex-start;
+  width: 100%;
+  display: flex;
   background-color: var(--main-theme-gray-70);
   padding: 8px;
   border-radius: 8px;
@@ -47,6 +48,7 @@ export default {
 }
 
 .tile-body {
+  flex: 1;
   display: flex;
   align-items: center;
   padding-top: 8px;
