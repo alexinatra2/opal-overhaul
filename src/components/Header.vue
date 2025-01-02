@@ -2,40 +2,33 @@
 import SearchBar from './SearchBar.vue';
 import Tabs from './Tabs.vue';
 import Profile from './Profile.vue';
+import Settings from "./Settings.vue";
 </script>
 
 <template>
   <header class="header">
     <div class="header-content">
       <div class="left-group">
-        <img src="./assets/logo.png" alt="Logo" class="logo" />
+        <img src="/logo.png" alt="Logo" class="logo" />
         <Tabs />
       </div>
       <div class="right-group">
         <SearchBar />
         <Profile />
+        <Settings />
       </div>
     </div>
   </header>
 </template>
 
 <style scoped>
-.header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-  z-index: 1000;
-  background-color: var(--background-dark);
-}
-
 .header-content {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5em 2em;
+  align-items: center; /* Zentriert die Elemente vertikal */
+  justify-content: space-between; /* Abstand zwischen linker und rechter Gruppe */
+  padding: 0.3em 2em;
   color: var(--text-dark);
+  height: 60px; /* Einheitliche Höhe für den Header */
 }
 
 .left-group {
@@ -51,13 +44,14 @@ import Profile from './Profile.vue';
 }
 
 .logo {
-  height: 100%;
-  max-height: 50px;
+  height: 35px; /* Feste Höhe für das Logo */
   width: auto;
   transition: filter 300ms;
 }
 
 .logo:hover {
-  filter: drop-shadow(0 0 2em var(--main-theme-color-40));
+  transform: scale(1.1); /* Vergrößert das gesamte Profilbild leicht */
+  filter: brightness(1.2);
 }
+
 </style>

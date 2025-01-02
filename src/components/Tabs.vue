@@ -41,7 +41,7 @@ const hoverTab = (index: number) => {
 }
 
 .tab {
-  color: var(--main-theme-gray-50);
+  color: var(--text-dark);
   cursor: pointer;
   font-size: 1.25em;
   transition: color 0.3s ease;
@@ -49,6 +49,6 @@ const hoverTab = (index: number) => {
 
 .tab:hover,
 .tab.active {
-  color: var(--main-theme-color-50);
+  color: var(--main-theme-color-30);
 }
 </style>

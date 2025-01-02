@@ -1,6 +1,6 @@
 <template>
   <div class="profile" @click="goToProfile">
-    <img src="/src/assets/profile.png" alt="Profil" class="profile-icon" />
+    <img src="/profile.png" class="profile-icon" />
   </div>
 </template>
 
@@ -17,17 +17,12 @@ const goToProfile = () => {
   justify-content: center;
   width: 40px;
   height: 40px;
-  border-radius: 50%;
-  cursor: pointer;
-  background-color: var(--main-theme-gray-20);
-  transition: border-color 0.3s ease, background-color 0.3s ease;
   overflow: hidden;
-  border: 2px solid var(--neutral-white);
 }
 
 .profile:hover {
-  border-color: var(--main-theme-color-40);
-  background-color: var(--main-theme-gray-10);
+  transform: scale(1.1); /* Vergrößert das gesamte Profilbild leicht */
+  filter: brightness(1.2); /* Erhellt das Bild */
 }
 
 .profile-icon {
