@@ -15,8 +15,11 @@
 
   --text-light: #2E2E2E;
   --text-dark: #ededed;
+  --text-medium: #00809c;
   --background-light: #ededed;
-  --background-dark: #2E2E2E;
+  --background-dark: #00809c;
+  --background-medium: #6fbecf;
+  --background-grey: #b9b9b9;
   --neutral-white: #fff;
   --neutral-black: #000;
   --main-theme-gray-5: #ededed;
@@ -80,9 +83,30 @@ body {
 }
 
 #app {
-  width: "100%";
+  width: 100%;
   height: 100vh;
   text-align: center;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px; /* Höhe des Headers */
+  z-index: 1000;
+  background-color: var(--background-dark);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+main {
+  margin-top: 70px; /* Platz für den fixierten Header */
+  height: calc(100vh - 70px); /* Gesamthöhe abzüglich des Headers */
+  overflow-y: auto; /* Scrollen, falls der Inhalt größer ist */
+  background-color: var(--background-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (prefers-color-scheme: light) {
