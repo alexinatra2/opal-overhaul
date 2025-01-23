@@ -1,57 +1,75 @@
-<script setup lang="ts"> 
-import SearchBar from './SearchBar.vue';
-import Tabs from './Tabs.vue';
-import Profile from './Profile.vue';
+<script setup lang="ts">
+import { defineEmits } from "vue";
+import SearchBar from "./SearchBar.vue";
+import Profile from "./Profile.vue";
 import Settings from "./Settings.vue";
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
+import { faCog } from "@fortawesome/free-solid-svg-icons";
+
+const emit = defineEmits(["toggleDrawer"]);
 </script>
 
 <template>
   <header class="header">
     <div class="header-content">
-      <div class="left-group">
-        <img src="/logo.png" alt="Logo" class="logo" />
+      <div class="group">
+        <button class="icon scale-animate" @click="emit('toggleDrawer')">
+          <font-awesome-icon :icon="faBars" />
+        </button>
+        <router-link to="/">
+          <img src="/logo.png" alt="Logo" class="logo scale-animate" height="32px" />
+        </router-link>
         <Tabs />
       </div>
-      <div class="right-group">
+      <div class="group">
         <SearchBar />
-        <Profile />
-        <Settings />
+        <button class="icon scale-animate">
+          <font-awesome-icon :icon="faUser" />
+        </button>
+        <button class="icon scale-animate">
+          <font-awesome-icon :icon="faCog" />
+        </button>
       </div>
     </div>
   </header>
 </template>
 
 <style scoped>
+.header { 
+  position: fixed;
+  width: 100%;
+  z-index: 100;
+}
+
 .header-content {
   display: flex;
-  align-items: center; /* Zentriert die Elemente vertikal */
-  justify-content: space-between; /* Abstand zwischen linker und rechter Gruppe */
-  padding: 0.3em 2em;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  background-color: var(--main-theme-gray-70);
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
   color: var(--text-dark);
-  height: 60px; /* Einheitliche Höhe für den Header */
 }
 
-.left-group {
-  display: flex;
-  align-items: center;
-  gap: 2em;
+.scale-animate { 
+  transition: transform 0.2s ease-in-out;
 }
 
-.right-group {
-  display: flex;
-  align-items: center;
-  gap: 1em;
+.scale-animate:hover { 
+  transform: scale(1.1);
 }
-
-.logo {
-  height: 35px; /* Feste Höhe für das Logo */
-  width: auto;
-  transition: filter 300ms;
-}
-
-.logo:hover {
-  transform: scale(1.1); /* Vergrößert das gesamte Profilbild leicht */
-  filter: brightness(1.2);
-}
-
 </style>
