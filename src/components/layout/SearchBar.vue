@@ -1,9 +1,17 @@
+<script setup lang="ts">
+import { ref } from 'vue';
+import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
+const searchQuery = ref('');
+
+const handleSearch = () => {
+  console.log('Suchanfrage:', searchQuery.value);
+};
+</script>
+
 <template>
   <div class="search-bar">
-    <!-- SVG-Logo aus src/assets -->
-    <span class="search-icon">
-      <img src="/lupe.svg" class="icon" />
-    </span>
     <input
         type="text"
         v-model="searchQuery"
@@ -11,66 +19,39 @@
         class="search-input"
         @input="handleSearch"
     />
+    <font-awesome-icon :icon="faSearch" class="icon" />
   </div>
 </template>
-
-<script setup lang="ts">
-import { ref } from 'vue';
-
-// Lokaler Zustand für die Sucheingabe
-const searchQuery = ref('');
-
-// Funktion, die bei Eingabe aufgerufen wird
-const handleSearch = () => {
-  console.log('Suchanfrage:', searchQuery.value);
-};
-</script>
 
 <style scoped>
 .search-bar {
   display: flex;
   align-items: center;
-  background-color: var(--background-medium);
-  padding: 0.5em 1em;
-  border-radius: 20px;
+  background-color: var(--background-light);
+  padding: 0.25rem 1rem;
+  border-radius: 2rem;
   width: 300px;
   transition: background-color 0.3s ease;
 }
 
-.search-bar:hover {
-  background-color: var(--main-theme-color-10);
-}
-
-.search-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 0.5em;
-  fill: var(--text-dark);
-}
-
 .icon {
-  width: 1.5rem; /* Breite des Icons */
-  height: 1.5rem; /* Höhe des Icons */
+  background: none;
+  border: none;
+  font-size: 1.5rem;
   cursor: pointer;
-  transition: filter 0.3s ease;
-  fill: var(--text-dark); /* Farbe des Icons */
-}
-
-.search-bar:hover .icon {
-  filter: brightness(1.2); /* Heller bei Hover */
+  color: var(--text-dark);
 }
 
 .search-input {
+  outline: none;
   border: none;
   background: none;
-  color: var(--text-medium);
+  color: var(--text-light);
   flex: 1;
   font-size: 1rem;
-  outline: none;
 }
 
 ::placeholder {
-  color: var(--text-medium);
+  color: var(--main-theme-gray-50);
 }
 </style>
