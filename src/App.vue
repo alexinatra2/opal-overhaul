@@ -1,12 +1,22 @@
 <script setup lang="ts">
-import Header from './components/Header.vue';
-import Footer from "./components/Footer.vue";
+import { ref } from "vue";
+import Header from "./components/layout/Header.vue";
+import Sidebar from "./components/layout/Sidebar.vue";
+import Footer from "./components/layout/Footer.vue";
+
+const isDrawerOpen = ref(false);
+
+const toggleDrawer = () => {
+  isDrawerOpen.value = !isDrawerOpen.value;
+};
 </script>
 
 <template>
   <div class="app-container">
-    <Header />
+    <Header @toggleDrawer="toggleDrawer" />
+    <Sidebar :isOpen="isDrawerOpen" @close="toggleDrawer" />
     <main class="main-content">
+      <router-view/>
     </main>
     <Footer />
   </div>
@@ -16,13 +26,10 @@ import Footer from "./components/Footer.vue";
 .app-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Vollbildhöhe */
+  min-height: 100vh; 
 }
 
 .main-content {
-  flex: 1; /* Der Hauptinhalt nimmt den restlichen Platz ein */
-  padding: 2em;
-  background-color: var(--background-light);
-  overflow-y: auto; /* Ermöglicht Scrollen, falls der Inhalt zu groß ist */
+  flex: 1;
 }
 </style>
