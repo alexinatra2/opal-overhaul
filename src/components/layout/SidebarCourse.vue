@@ -1,18 +1,20 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
+import { useRoute } from "vue-router";
 
 interface Props { 
   name: string;
   id?: string;
-  active?: boolean;
-};
+}
 
 const props = defineProps<Props>();
+const route = useRoute();
+const active = route.params.id === props.id;
 </script>
 
 <template>
-  <router-link to="/" class="link">
-    <li class="item" :class="{ 'active': props.active }">
+  <router-link :to="`/courses/${props.id}`" class="link">
+    <li class="item" :class="{ 'active': active }">
       <h4>{{ props.name }}</h4>
       <p class="course-id">{{ props.id }}</p>
     </li>
@@ -36,7 +38,7 @@ const props = defineProps<Props>();
 }
 
 .active {
-  background-color: var(--main-theme-color-);
+  background-color: var(--main-theme-color-40);
 }
 
 .link {
