@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script>
 const goToSettings = () => {
   console.log("Zu den Einstellungen navigieren");
 };

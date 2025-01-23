@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script setup lang="ts"> 
 import SearchBar from './SearchBar.vue';
 import Tabs from './Tabs.vue';
 import Profile from './Profile.vue';
