@@ -37,7 +37,7 @@ import {faPlus} from "@fortawesome/free-solid-svg-icons";
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh; /* Optional: makes it take full screen height */
+  height: 100%;
 }
 
 .introduction {

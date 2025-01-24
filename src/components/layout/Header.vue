@@ -17,7 +17,6 @@ const emit = defineEmits(["toggleDrawer"]);
         <router-link to="/">
           <img src="/logo.png" alt="Logo" class="logo scale-animate" height="32px"/>
         </router-link>
-        <Tabs/>
       </div>
       <div class="group">
         <SearchBar/>
@@ -34,7 +33,8 @@ const emit = defineEmits(["toggleDrawer"]);
 
 <style scoped>
 .header {
-  position: fixed;
+  position: sticky;
+  top: 0;
   width: 100%;
   z-index: 100;
 }

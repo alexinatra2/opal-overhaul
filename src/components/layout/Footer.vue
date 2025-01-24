@@ -10,9 +10,11 @@
 
 <style scoped>
 .footer {
+  position: sticky;
+  bottom: 0;
   width: 100%;
   background-color: var(--gray-70);
-  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .footer-content {

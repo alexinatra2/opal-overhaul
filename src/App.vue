@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import {ref} from "vue";
 import Header from "./components/layout/Header.vue";
 import Sidebar from "./components/layout/Sidebar.vue";
 import Footer from "./components/layout/Footer.vue";
@@ -13,17 +13,18 @@ const toggleDrawer = () => {
 
 <template>
   <div class="app-container">
-    <Header @toggleDrawer="toggleDrawer" />
-    <Sidebar :isOpen="isDrawerOpen" @close="toggleDrawer" />
+    <Header @toggleDrawer="toggleDrawer"/>
+    <Sidebar :isOpen="isDrawerOpen" @close="toggleDrawer"/>
     <main class="main-content">
       <router-view/>
     </main>
-    <Footer />
+    <Footer/>
   </div>
 </template>
 
 <style scoped>
 .app-container {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100vh;
