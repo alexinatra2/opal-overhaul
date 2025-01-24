@@ -1,4 +1,15 @@
+import {defineStore} from "pinia";
 import {ref} from "vue";
 
-export const sidebarOpen = ref(false);
+export const useUiStore = defineStore("ui", () => {
+    const sidebarOpen = ref(false);
+    const toggleSidebar = () => {
+        sidebarOpen.value = !sidebarOpen.value;
+    }
+    const closeSidebar = () => {
+        sidebarOpen.value = false;
+    }
+    return {sidebarOpen, toggleSidebar, closeSidebar};
+});
+
 

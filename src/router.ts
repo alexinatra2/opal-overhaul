@@ -4,12 +4,12 @@ import Course from "./components/course/Course.vue";
 import NoCoursesStartPage from "./components/start/NoCoursesStartPage.vue";
 import CoursesStartPage from "./components/start/CoursesStartPage.vue";
 import SearchPage from "./components/search/SearchPage.vue";
-import {sidebarOpen} from "./store/ui.ts";
+import {useUiStore} from "./store/ui.ts";
 
 const routes: RouterOptions["routes"] = [
     {path: "/courses", component: NoCoursesStartPage},
     {path: "/no-courses", component: CoursesStartPage},
-    {path: "/search", component: SearchPage},
+    {name: "search", path: "/search", component: SearchPage},
     {path: "/courses/:id", component: Course},
 ];
 
@@ -32,7 +32,8 @@ router.beforeEach((to, _from, next) => {
 });
 
 router.afterEach(() => {
-    sidebarOpen.value = false;
+    const {closeSidebar} = useUiStore();
+    closeSidebar();
 })
 
 export default router;

@@ -2,17 +2,15 @@
 import Header from "./components/layout/Header.vue";
 import Sidebar from "./components/layout/Sidebar.vue";
 import Footer from "./components/layout/Footer.vue";
-import {sidebarOpen} from "@/store/ui.ts";
+import {useUiStore} from "@/store/ui.ts";
 
-const toggleSidebar = () => {
-  sidebarOpen.value = !sidebarOpen.value;
-};
+const uiStore = useUiStore();
 </script>
 
 <template>
   <div class="app-container">
-    <Header @toggleDrawer="toggleSidebar"/>
-    <Sidebar :isOpen="sidebarOpen" @close="toggleSidebar"/>
+    <Header @toggleDrawer="uiStore.toggleSidebar"/>
+    <Sidebar :isOpen="uiStore.sidebarOpen" @close="uiStore.toggleSidebar"/>
     <main class="main-content">
       <Transition name="fade" mode="out-in">
         <router-view/>

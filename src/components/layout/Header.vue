@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import {defineEmits} from "vue";
 import SearchBar from "./SearchBar.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {faBars, faCog, faUser} from "@fortawesome/free-solid-svg-icons";
+import {useUiStore} from "@/store/ui.ts";
 
-const emit = defineEmits(["toggleDrawer"]);
+const uiStore = useUiStore();
 </script>
 
 <template>
   <header class="header">
     <div class="header-content">
       <div class="group">
-        <button class="icon scale-animate" @click="emit('toggleDrawer')">
+        <button class="icon scale-animate" @click="uiStore.toggleSidebar">
           <font-awesome-icon :icon="faBars"/>
         </button>
         <router-link to="/">
@@ -43,7 +43,7 @@ const emit = defineEmits(["toggleDrawer"]);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0.5rem 1rem;
+  padding: 1rem 1rem;
   background-color: var(--gray-70);
 }
 
