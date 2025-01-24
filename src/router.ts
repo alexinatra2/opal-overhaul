@@ -17,8 +17,8 @@ const routes: RouterOptions["routes"] = [
             }
         }
     },
-    {path: "/courses", component: NoCoursesStartPage},
-    {path: "/no-courses", component: CoursesStartPage},
+    {path: "/courses", component: CoursesStartPage},
+    {path: "/no-courses", component: NoCoursesStartPage},
     {name: "search", path: "/search", component: SearchPage},
     {path: "/courses/:id", component: Course},
 ];

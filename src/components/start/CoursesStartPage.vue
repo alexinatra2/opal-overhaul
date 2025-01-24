@@ -1,29 +1,20 @@
 <script setup lang="ts">
-import Card from "@/components/shared/OpalCard.vue"; // Adjust the path if necessary
+import OpalButton from "@/components/shared/OpalButton.vue";
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import {faSortAlphaAsc} from "@fortawesome/free-solid-svg-icons";
 </script>
 
 <template>
-  <div class="centered">
-    <Card>
-      <template #header>
-        <h2>🔥 MUI-Style Card</h2>
+  <section class="w-full flex items-center bg-white p-4 gap-4">
+    <h1 class="text-3xl font-bold flex-1">Deine Kurse</h1>
+    <OpalButton>
+      <template #start-adornment>
+        <font-awesome-icon :icon="faSortAlphaAsc"/>
       </template>
-
-      <p>This is a centered card component.</p>
-
-      <template #actions>
-        <button>OK</button>
-        <button>Cancel</button>
-      </template>
-    </Card>
-  </div>
+      Sortieren
+    </OpalButton>
+  </section>
 </template>
 
 <style scoped>
-.centered {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Optional: makes it take full screen height */
-}
 </style>
