@@ -26,7 +26,7 @@ const toggleDrawer = () => {
 .app-container {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; 
+  height: 100vh;
 }
 
 .main-content {
