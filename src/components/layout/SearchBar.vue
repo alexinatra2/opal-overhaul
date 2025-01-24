@@ -39,15 +39,17 @@ const submitSearch = () => {
   padding: 0.25rem 1rem;
   border-radius: 2rem;
   width: 300px;
-  transition: background-color 0.3s ease;
+  transition: border 0.3s ease;
+  border: 2px solid transparent;
 }
 
-.icon {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--text-dark);
+.search-bar svg {
+  transition: color 0.3s ease;
+}
+
+.search-bar:focus-within {
+  border: 2px solid var(--primary-40);
+  color: var(--primary-40);
 }
 
 .search-input {
