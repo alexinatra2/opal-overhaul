@@ -17,7 +17,7 @@ defineProps<{ course: Course }>();
       <p>Hier finden Sie updates zu diesem Kurs</p>
     </section>
 
-    <section class="flex flex-col gap-2">
+    <section v-if="course.desc" class="flex flex-col gap-2">
       <h2 class="text-2xl font-bold">Beschreibung</h2>
       <p>{{ course.desc }}</p>
     </section>
