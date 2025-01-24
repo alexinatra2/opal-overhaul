@@ -14,7 +14,9 @@ const toggleSidebar = () => {
     <Header @toggleDrawer="toggleSidebar"/>
     <Sidebar :isOpen="sidebarOpen" @close="toggleSidebar"/>
     <main class="main-content">
-      <router-view/>
+      <Transition name="fade" mode="out-in">
+        <router-view/>
+      </Transition>
     </main>
     <Footer/>
   </div>
@@ -30,5 +32,15 @@ const toggleSidebar = () => {
 
 .main-content {
   flex: 1;
+  overflow-y: auto;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease-in-out;
+}
+
+.fade-enter, .fade-leave-to /* 'to' is required for Vue 3 */
+{
+  opacity: 0;
 }
 </style>
