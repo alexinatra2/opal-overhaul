@@ -2,10 +2,11 @@
 import {reactive, ref, watch} from "vue";
 import useCoursesStore, {Course} from "@/store/courses.ts";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
-import {faCheck, faFilter} from "@fortawesome/free-solid-svg-icons";
+import {faFilter} from "@fortawesome/free-solid-svg-icons";
 import OpalButton from "@/components/shared/OpalButton.vue";
-import OpalCard from "@/components/shared/OpalCard.vue";
 import {useRoute} from "vue-router";
+import OpalVerticalPage from "@/components/shared/OpalVerticalPage.vue";
+import CourseCard from "@/components/shared/CourseCard.vue";
 
 const coursesStore = useCoursesStore();
 
@@ -23,47 +24,40 @@ watch(() => route.query.value, loadAvailableCourses, {immediate: true});
 </script>
 
 <template>
-  <section class="w-full flex items-center bg-white p-4 gap-4">
-    <h1 class="text-3xl font-bold flex-1">Kurssuche</h1>
-    <OpalButton>
-      <template #start-adornment>
-        <font-awesome-icon :icon="faFilter"/>
-      </template>
-      Filtern
-    </OpalButton>
-  </section>
-  <p v-if="loading">Loading...</p>
-  <section v-if="serverData.courses.length > 0" class="flex flex-wrap gap-4 p-4">
-    <OpalCard v-for="course in serverData.courses" :key="course.id">
-      <template #header>
-        <div class="relative">
-          <div class="w-full text-left">
-            <h3>{{ course.name }}</h3>
-            <p class="text-base font-medium">{{ course.id }}</p>
-            <p class="text-base font-medium text-gray-500">{{ course.author }}</p>
-          </div>
-          <div class="absolute top-1 right-0 flex items-center gap-2">
-            <font-awesome-icon :icon="faCheck" class="text-(--primary-40)"/>
-            <p class="text-sm font-medium">eingeschrieben</p>
-          </div>
-        </div>
-      </template>
-      <p class="w-[300px] h-32 text-sm overflow-clip">
-        {{ course.desc }}
-      </p>
-      <template #actions>
-        <div class="flex justify-end">
-          <OpalButton>
-            <router-link :to="`/course/${course.id}`">
-              Zur Kursseite
-            </router-link>
-          </OpalButton>
-        </div>
-      </template>
-    </OpalCard>
-  </section>
+  <OpalVerticalPage>
+    <template #headline>
+      Kurssuche
+    </template>
+
+    <template #headerContent>
+      <OpalButton>
+        <template #start-adornment>
+          <font-awesome-icon :icon="faFilter"/>
+        </template>
+        Filtern
+      </OpalButton>
+    </template>
+
+    <template #default>
+      <p v-if="loading">Loading...</p>
+      <section v-if="serverData.courses.length > 0" class="flex flex-wrap gap-4 p-4">
+        <CourseCard
+            v-for="course in serverData.courses"
+            :name="course.name"
+            :key="course.id"
+            :id="course.id"
+            :desc="course.desc"
+            :author="course.author"
+        >
+          <template #actions>
+            <OpalButton>
+              <router-link :to="`/course/${course.id}`">
+                Zur Kursseite
+              </router-link>
+            </OpalButton>
+          </template>
+        </CourseCard>
+      </section>
+    </template>
+  </OpalVerticalPage>
 </template>
-
-<style scoped>
-
-</style>

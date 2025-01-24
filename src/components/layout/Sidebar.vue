@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import {defineEmits, defineProps} from "vue";
-import coursesStore from "@/store/courses";
+import useCoursesStore from "@/store/courses";
 import SidebarCourse from "./SidebarCourse.vue";
 
 defineProps<{ isOpen: boolean }>();
 const emit = defineEmits(["close"]);
+const coursesStore = useCoursesStore();
 </script>
 
 <template>
@@ -13,7 +14,7 @@ const emit = defineEmits(["close"]);
     <nav class="nav">
       <ul class="course-list">
         <li v-for="course in coursesStore.courses" :key="course.id">
-          <SidebarCourse :name="course.name" :id="course.id" :active="coursesStore.activeCourse === course.id"/>
+          <SidebarCourse :name="course.name" :id="course.id"/>
         </li>
       </ul>
     </nav>
