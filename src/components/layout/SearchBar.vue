@@ -2,25 +2,33 @@
 import {ref} from 'vue';
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {faSearch} from "@fortawesome/free-solid-svg-icons";
+import {useRouter} from "vue-router";
 
 const searchQuery = ref('');
+const router = useRouter();
 
-const handleSearch = () => {
-  console.log('Suchanfrage:', searchQuery.value);
-};
+const submitSearch = () => {
+  if (searchQuery.value.trim()) {
+    router.push({name: 'search', query: {value: searchQuery.value}})
+  }
+}
 </script>
 
 <template>
-  <div class="search-bar">
-    <input
-        type="text"
-        v-model="searchQuery"
-        placeholder="Suche"
-        class="search-input"
-        @input="handleSearch"
-    />
-    <font-awesome-icon :icon="faSearch" class="icon"/>
-  </div>
+  <form @submit.prevent="submitSearch">
+    <div class="search-bar">
+      <input
+          type="text"
+          v-model="searchQuery"
+          placeholder="Suche"
+          class="search-input"
+          @keydown.enter="submitSearch"
+      />
+      <router-link :to="{ name: 'search', query: { value: searchQuery }}">
+        <font-awesome-icon :icon="faSearch"/>
+      </router-link>
+    </div>
+  </form>
 </template>
 
 <style scoped>
