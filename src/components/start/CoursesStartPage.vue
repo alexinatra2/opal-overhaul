@@ -33,7 +33,7 @@ const courseData = useCoursesStore();
       >
         <template #actions>
           <OpalButton>
-            <router-link :to="`/course/${course.id}`">
+            <router-link :to="`/courses/${course.id}`">
               Zur Kursseite
             </router-link>
           </OpalButton>

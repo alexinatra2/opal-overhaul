@@ -1,6 +1,6 @@
 import {createRouter, createWebHistory, RouterOptions} from "vue-router";
 import useCoursesStore from "./store/courses";
-import Course from "./components/course/Course.vue";
+import CoursePage from "./components/course/CoursePage.vue";
 import NoCoursesStartPage from "./components/start/NoCoursesStartPage.vue";
 import CoursesStartPage from "./components/start/CoursesStartPage.vue";
 import SearchPage from "./components/search/SearchPage.vue";
@@ -20,7 +20,7 @@ const routes: RouterOptions["routes"] = [
     {path: "/courses", component: CoursesStartPage},
     {path: "/no-courses", component: NoCoursesStartPage},
     {name: "search", path: "/search", component: SearchPage},
-    {path: "/courses/:id", component: Course},
+    {path: "/courses/:id", component: CoursePage},
 ];
 
 const router = createRouter({
@@ -28,7 +28,7 @@ const router = createRouter({
     routes,
 });
 
-// Navigation Guard to Redirect Based on Course Availability
+// Navigation Guard to Redirect Based on CoursePage Availability
 router.beforeEach((to, _from, next) => {
     if (to.path === "/") {
     } else {

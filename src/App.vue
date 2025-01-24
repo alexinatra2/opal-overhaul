@@ -10,8 +10,8 @@ const uiStore = useUiStore();
 <template>
   <div class="app-container">
     <Header @toggleDrawer="uiStore.toggleSidebar"/>
-    <Sidebar :isOpen="uiStore.sidebarOpen" @close="uiStore.toggleSidebar"/>
     <main class="main-content">
+      <Sidebar :isOpen="uiStore.sidebarOpen" @close="uiStore.toggleSidebar"/>
       <Transition name="fade" mode="out-in">
         <router-view/>
       </Transition>
@@ -29,6 +29,7 @@ const uiStore = useUiStore();
 }
 
 .main-content {
+  position: relative;
   flex: 1;
   overflow-y: auto;
 }

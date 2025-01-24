@@ -51,7 +51,7 @@ watch(() => route.query.value, loadAvailableCourses, {immediate: true});
         >
           <template #actions>
             <OpalButton>
-              <router-link :to="`/course/${course.id}`">
+              <router-link :to="`/courses/${course.id}`">
                 Zur Kursseite
               </router-link>
             </OpalButton>
