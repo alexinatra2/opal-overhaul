@@ -1,20 +1,18 @@
 <script setup lang="ts">
-import {ref} from "vue";
 import Header from "./components/layout/Header.vue";
 import Sidebar from "./components/layout/Sidebar.vue";
 import Footer from "./components/layout/Footer.vue";
+import {sidebarOpen} from "@/store/ui.ts";
 
-const isDrawerOpen = ref(false);
-
-const toggleDrawer = () => {
-  isDrawerOpen.value = !isDrawerOpen.value;
+const toggleSidebar = () => {
+  sidebarOpen.value = !sidebarOpen.value;
 };
 </script>
 
 <template>
   <div class="app-container">
-    <Header @toggleDrawer="toggleDrawer"/>
-    <Sidebar :isOpen="isDrawerOpen" @close="toggleDrawer"/>
+    <Header @toggleDrawer="toggleSidebar"/>
+    <Sidebar :isOpen="sidebarOpen" @close="toggleSidebar"/>
     <main class="main-content">
       <router-view/>
     </main>
