@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Card from "@/components/shared/Card.vue"; // Adjust the path if necessary
+import Card from "@/components/shared/OpalCard.vue"; // Adjust the path if necessary
 </script>
 
 <template>

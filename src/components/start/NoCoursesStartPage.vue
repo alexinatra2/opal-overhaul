@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Card from "@/components/shared/Card.vue";
-import Button from "@/components/shared/Button.vue";
+import Card from "@/components/shared/OpalCard.vue";
+import Button from "@/components/shared/OpalButton.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {faPlus} from "@fortawesome/free-solid-svg-icons";
 </script>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useSlots } from "vue";
+import {useSlots} from "vue";
 
 const slots = useSlots();
 </script>
@@ -24,7 +24,7 @@ const slots = useSlots();
 .card {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: stretch;
   gap: 2rem;
   border-radius: 12px;
   padding: 2rem;

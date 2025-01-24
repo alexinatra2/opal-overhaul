@@ -28,6 +28,7 @@ const slots = useSlots();
   padding: 0.5rem 1rem;
   gap: 1rem;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .button:hover {
