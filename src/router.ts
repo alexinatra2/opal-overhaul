@@ -3,10 +3,12 @@ import coursesStore from "./store/courses";
 import Course from "./components/course/Course.vue";
 import NoCoursesStartPage from "./components/start/NoCoursesStartPage.vue";
 import CoursesStartPage from "./components/start/CoursesStartPage.vue";
+import SearchPage from "./components/search/SearchPage.vue";
 
 const routes: RouterOptions["routes"] = [
   { path: "/courses", component: NoCoursesStartPage },
   { path: "/no-courses", component: CoursesStartPage },
+  { path: "/search", component: SearchPage },
   { path: "/courses/:id", component: Course },
 ];
 
