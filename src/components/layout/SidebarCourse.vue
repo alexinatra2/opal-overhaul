@@ -1,15 +1,22 @@
 <script setup lang="ts">
-import {defineProps} from "vue";
+import {defineProps, ref, watch} from "vue";
 import {useRoute} from "vue-router";
 
 interface Props {
   name: string;
-  id?: string;
+  id: string;
 }
 
 const props = defineProps<Props>();
 const route = useRoute();
-const active = route.params.id === props.id;
+
+const active = ref(false);
+watch(
+    () => route.params.id,
+    (newId, _oldId) => {
+      active.value = newId === props.id;
+    }
+);
 </script>
 
 <template>
