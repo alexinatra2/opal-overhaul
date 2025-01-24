@@ -15,7 +15,7 @@ const emit = defineEmits(["toggleDrawer"]);
           <font-awesome-icon :icon="faBars"/>
         </button>
         <router-link to="/">
-          <img src="/logo.png" alt="Logo" class="logo scale-animate" height="32px"/>
+          <img src="/logo.png" alt="Logo" class="h-8 logo scale-animate"/>
         </router-link>
       </div>
       <div class="group">
