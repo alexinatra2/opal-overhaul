@@ -23,13 +23,11 @@ const coursesStore = useCoursesStore();
 
 <style scoped>
 .drawer {
-  position: fixed;
-  top: 3.5rem;
-  bottom: 2rem;
+  position: absolute;
+  inset-block: 0;
   left: -300px;
   width: 300px;
   z-index: 200;
-  height: calc(100vh - 6rem);
   background: var(--primary-60);
   transition: left 0.3s ease;
 }
