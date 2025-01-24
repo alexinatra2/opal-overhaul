@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { ref } from 'vue';
-import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import {ref} from 'vue';
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import {faSearch} from "@fortawesome/free-solid-svg-icons";
 
 const searchQuery = ref('');
 
@@ -19,7 +19,7 @@ const handleSearch = () => {
         class="search-input"
         @input="handleSearch"
     />
-    <font-awesome-icon :icon="faSearch" class="icon" />
+    <font-awesome-icon :icon="faSearch" class="icon"/>
   </div>
 </template>
 
@@ -52,6 +52,6 @@ const handleSearch = () => {
 }
 
 ::placeholder {
-  color: var(--main-theme-gray-50);
+  color: var(--gray-50);
 }
 </style>

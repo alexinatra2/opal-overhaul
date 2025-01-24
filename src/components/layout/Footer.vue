@@ -11,8 +11,8 @@
 <style scoped>
 .footer {
   width: 100%;
-  background-color: var(--main-theme-gray-70);
-  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1); 
+  background-color: var(--gray-70);
+  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .footer-content {
@@ -20,18 +20,18 @@
   justify-content: flex-end;
   align-items: center;
   padding: 0.5rem 1rem;
-  gap: 2rem; 
+  gap: 2rem;
 }
 
 .footer-link {
-  text-decoration: none; 
-  color: var(--text-dark); 
-  transition: text-decoration 0.3s ease, color 0.3s ease; 
+  text-decoration: none;
+  color: var(--text-dark);
+  transition: text-decoration 0.3s ease, color 0.3s ease;
 }
 
 .footer-link:hover {
   text-decoration: underline;
-  color: var(--main-theme-color-40);
+  color: var(--primary-40);
 }
 </style>
 

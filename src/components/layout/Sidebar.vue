@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, defineEmits } from "vue";
+import {defineEmits, defineProps} from "vue";
 import coursesStore from "@/store/courses";
 import SidebarCourse from "./SidebarCourse.vue";
 
@@ -29,7 +29,7 @@ const emit = defineEmits(["close"]);
   width: 300px;
   z-index: 200;
   height: calc(100vh - 6rem);
-  background: var(--main-theme-color-60);
+  background: var(--primary-60);
   transition: left 0.3s ease;
 }
 
@@ -37,7 +37,7 @@ const emit = defineEmits(["close"]);
   left: 0;
 }
 
-.course-list { 
+.course-list {
   width: 100%;
   padding: 0;
   display: flex;

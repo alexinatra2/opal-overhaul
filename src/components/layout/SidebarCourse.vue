@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { defineProps } from "vue";
-import { useRoute } from "vue-router";
+import {defineProps} from "vue";
+import {useRoute} from "vue-router";
 
-interface Props { 
+interface Props {
   name: string;
   id?: string;
 }
@@ -34,18 +34,18 @@ const active = route.params.id === props.id;
 }
 
 .item:hover {
-  background-color: var(--main-theme-color-50);
+  background-color: var(--primary-50);
 }
 
 .active {
-  background-color: var(--main-theme-color-40);
+  background-color: var(--primary-40);
 }
 
 .link {
   text-decoration: none;
 }
 
-.course-id { 
-  color: var(--main-theme-gray-20);
+.course-id {
+  color: var(--gray-20);
 }
 </style>
