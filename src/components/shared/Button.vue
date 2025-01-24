@@ -26,7 +26,7 @@ const slots = useSlots();
   color: white;
   background-color: var(--primary-60);
   padding: 0.5rem 1rem;
-  gap: 2rem;
+  gap: 1rem;
   cursor: pointer;
 }
 
@@ -37,7 +37,6 @@ const slots = useSlots();
 .button-content {
   flex: 1;
   color: white;
-  text-decoration: none;
   font-weight: bolder;
 }
 </style>

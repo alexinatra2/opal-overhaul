@@ -41,10 +41,6 @@ const active = route.params.id === props.id;
   background-color: var(--primary-40);
 }
 
-.link {
-  text-decoration: none;
-}
-
 .course-id {
   color: var(--gray-20);
 }
