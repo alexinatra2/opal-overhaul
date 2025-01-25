@@ -1,4 +1,5 @@
 import {defineStore} from "pinia";
+import {ref} from "vue";
 
 export type CourseNode = {
     title: string;
@@ -14,7 +15,7 @@ export interface Course {
     nodes?: CourseNode[];
 }
 
-const courses: Course[] = [
+const initialCourses: Course[] = [
     {
         name: "Kurs 1",
         id: "II-903",
@@ -68,8 +69,29 @@ const courses: Course[] = [
     },
 ];
 
-const useCoursesStore = defineStore("courses", () => ({
-    courses
-}));
+const initialEnrolled: string[] = [];
+
+const useCoursesStore = defineStore("courses", () => {
+    const courses = ref(initialCourses);
+    const enrolled = ref(initialEnrolled);
+    const toggleEnrolment = (courseId: string) => {
+        const enrolCourse = courses.value.find((c) => c.id === courseId);
+        if (enrolCourse) {
+            const isEnrolled = enrolled.value.includes(enrolCourse.id);
+            if (isEnrolled) {
+                enrolled.value = enrolled.value.filter((id) => id !== courseId);
+            } else {
+                enrolled.value = [...enrolled.value, courseId];
+            }
+            return true;
+        }
+        return false;
+    }
+    return {
+        courses,
+        enrolled,
+        toggleEnrolment,
+    }
+});
 
 export default useCoursesStore;
