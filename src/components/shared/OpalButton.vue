@@ -24,7 +24,7 @@ const slots = useSlots();
   border-radius: 24px;
   border: none;
   color: white;
-  background-color: var(--primary-60);
+  background-color: var(--color-primary-600);
   padding: 0.5rem 1rem;
   gap: 1rem;
   cursor: pointer;
@@ -32,7 +32,7 @@ const slots = useSlots();
 }
 
 .button:hover {
-  background-color: var(--primary-40);
+  background-color: var(--color-primary-400);
 }
 
 .button-content {

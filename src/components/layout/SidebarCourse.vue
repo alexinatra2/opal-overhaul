@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {defineProps, ref, watch} from "vue";
+import {ref, watch} from "vue";
 import {useRoute} from "vue-router";
 
 interface Props {
@@ -41,14 +41,14 @@ watch(
 }
 
 .item:hover {
-  background-color: var(--primary-50);
+  background-color: var(--color-primary-500);
 }
 
 .active {
-  background-color: var(--primary-40);
+  background-color: var(--color-primary-400);
 }
 
 .course-id {
-  color: var(--gray-20);
+  color: var(--color-gray-200);
 }
 </style>

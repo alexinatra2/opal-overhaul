@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import {defineEmits, defineProps} from "vue";
 import useCoursesStore from "@/store/courses";
 import SidebarCourse from "./SidebarCourse.vue";
 
@@ -28,7 +27,7 @@ const coursesStore = useCoursesStore();
   left: -300px;
   width: 300px;
   z-index: 200;
-  background: var(--primary-60);
+  background: var(--color-primary-600);
   transition: left 0.3s ease;
 }
 

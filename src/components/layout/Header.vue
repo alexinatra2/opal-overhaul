@@ -44,7 +44,7 @@ const uiStore = useUiStore();
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1rem;
-  background-color: var(--gray-70);
+  background-color: var(--color-gray-700);
 }
 
 .group {

@@ -1,5 +1,45 @@
 @import "tailwindcss";
 
+@theme {
+    --color-gray-50: #ededed;
+    --color-gray-100: #e3e3e3;
+    --color-gray-200: #c7c7c7;
+    --color-gray-300: #acacac;
+    --color-gray-400: #909090;
+    --color-gray-500: #757575;
+    --color-gray-600: #5d5d5d;
+    --color-gray-700: #3f4444;
+    --color-gray-800: #2E2E2E;
+    --color-primary-50: #e0f5fa;
+    --color-primary-100: #bbf2ff;
+    --color-primary-200: #76e6ff;
+    --color-primary-300: #42c4e1;
+    --color-primary-400: #00b7e1;
+    --color-primary-500: #00819d;
+    --color-primary-600: #006277;
+    --color-primary-700: #004352;
+    --color-primary-800: #00333e;
+    --color-primary-900: #00191f;
+    --color-accent-5: #feeee9;
+    --color-accent-10: #ffdacd;
+    --color-accent-30: #fa9370;
+    --color-accent-40: #F86C3D;
+    --color-accent-50: #D93D08;
+    --color-accent-60: #BC3000;
+    --color-accent-70: #9b2800;
+    --color-accent-80: #661A00;
+    --color-success-5: #d8f9f0;
+    --color-success-10: #abffe6;
+    --color-success-20: #7aedca;
+    --color-success-50: #128562;
+    --color-success-70: #006949;
+    --color-warning-10: #ffdeb6;
+    --color-warning-60: #965200;
+    --color-error-20: #FFB1A7;
+    --color-error-50: #e42b14;
+    --color-error-70: #A31300;
+}
+
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     line-height: 1.5;
@@ -20,49 +60,16 @@
 
     --background-light: #ededed;
     --background-grey: #b9b9b9;
-
-    --gray-5: #ededed;
-    --gray-10: #e3e3e3;
-    --gray-20: #c7c7c7;
-    --gray-30: #acacac;
-    --gray-40: #909090;
-    --gray-50: #757575;
-    --gray-60: #5d5d5d;
-    --gray-70: #3f4444;
-    --gray-80: #2E2E2E;
-    --primary-5: #e0f5fa;
-    --primary-10: #bbf2ff;
-    --primary-20: #76e6ff;
-    --primary-30: #42c4e1;
-    --primary-40: #00aed7;
-    --primary-50: #00819d;
-    --primary-60: #006277;
-    --primary-70: #004352;
-    --primary-80: #00333e;
-    --primary-90: #00191f;
-    --accent-5: #feeee9;
-    --accent-10: #ffdacd;
-    --accent-30: #fa9370;
-    --accent-40: #F86C3D;
-    --accent-50: #D93D08;
-    --accent-60: #BC3000;
-    --accent-70: #9b2800;
-    --accent-80: #661A00;
-    --success-5: #d8f9f0;
-    --success-10: #abffe6;
-    --success-20: #7aedca;
-    --success-50: #128562;
-    --success-70: #006949;
-    --warning-10: #ffdeb6;
-    --warning-60: #965200;
-    --error-20: #FFB1A7;
-    --error-50: #e42b14;
-    --error-70: #A31300;
 }
 
 * {
     margin: 0;
     box-sizing: border-box;
+}
+
+p, textarea {
+    max-width: 75ch;
+    text-wrap: pretty;
 }
 
 body {
