@@ -2,10 +2,20 @@
 import {useSlots} from "vue";
 
 useSlots();
+
+withDefaults(defineProps<{ colorVariant?: "default" | "green" | "red" }>(), {
+  colorVariant: "default"
+});
 </script>
 
 <template>
-  <button class="bg-primary-600 text-white
+  <button
+      :class="colorVariant === 'red'
+      ? 'bg-secondary-600'
+      : colorVariant === 'green'
+      ? 'bg-success-40'
+      : 'bg-primary-600'"
+      class="text-white
   flex items-center gap-4 px-4 py-2
   border-none rounded-full
   cursor-pointer
