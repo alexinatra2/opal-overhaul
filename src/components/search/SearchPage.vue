@@ -45,11 +45,8 @@ watch(() => route.query.value, loadAvailableCourses, {immediate: true});
       <section v-if="serverData.courses.length > 0" class="flex flex-wrap gap-4 p-4">
         <CourseCard
             v-for="course in serverData.courses"
-            :name="course.name"
+            :course="course"
             :key="course.id"
-            :id="course.id"
-            :desc="course.desc"
-            :author="course.author"
         >
           <template #actions>
             <OpalButton>

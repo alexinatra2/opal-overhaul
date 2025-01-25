@@ -34,11 +34,8 @@ const toggleSortDirection = () => {
     <section class="flex flex-wrap gap-4 p-4">
       <CourseCard
           v-for="course in sortedCourses"
-          :name="course.name"
+          :course="course"
           :key="course.id"
-          :id="course.id"
-          :desc="course.desc"
-          :author="course.author"
       >
         <template #actions>
           <OpalButton>
