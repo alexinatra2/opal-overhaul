@@ -6,12 +6,22 @@ export type CourseNode = {
     children?: CourseNode[];
 }
 
+type PeriodString = `${"Sommer" | "Winter"}semester ${number | `${number}/${number}`}`;
+
+interface Period {
+    detailed?: {
+        start?: Date;
+        end?: Date;
+    };
+    label: PeriodString;
+}
+
 export interface Course {
     name: string;
     id: string;
     author: string;
+    period?: Period;
     desc?: string;
-    enrolled?: boolean;
     nodes?: CourseNode[];
 }
 
@@ -21,7 +31,13 @@ const initialCourses: Course[] = [
         id: "II-903",
         desc: "Dies ist ein Beispielkurs mit kurzer Beschreibung",
         author: "Prof. Freitag",
-        enrolled: true,
+        period: {
+            label: "Sommersemester 2025",
+            detailed: {
+                start: new Date("03/03/2025"),
+                end: new Date("03/07/2025"),
+            }
+        },
         nodes: [
             {
                 title: "Skript",
