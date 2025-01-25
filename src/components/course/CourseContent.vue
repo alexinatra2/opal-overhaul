@@ -1,7 +1,16 @@
 <script setup lang="ts">
-import {Course} from "@/store/courses.ts";
+import useCoursesStore, {Course} from "@/store/courses.ts";
+import OpalButton from "@/components/shared/OpalButton.vue";
+import {computed} from "vue";
 
-defineProps<{ course: Course }>();
+const props = defineProps<{ course: Course }>();
+const courseId = props.course.id;
+
+const coursesStore = useCoursesStore();
+const toggleEnrolment = () => {
+  coursesStore.toggleEnrolment(courseId);
+}
+const isEnrolled = computed(() => coursesStore.enrolled.includes(courseId));
 </script>
 
 <template>
@@ -22,8 +31,10 @@ defineProps<{ course: Course }>();
       <p>{{ course.desc }}</p>
     </section>
 
-    <section class="">
-
+    <section>
+      <OpalButton @click="toggleEnrolment" class="w-48" :color-variant="isEnrolled ? 'red' : 'default'">
+        {{ isEnrolled ? "Austragen" : "Einschreiben" }}
+      </OpalButton>
     </section>
   </div>
 </template>
