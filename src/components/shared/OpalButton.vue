@@ -1,43 +1,30 @@
 <script setup lang="ts">
 import {useSlots} from "vue";
 
-const slots = useSlots();
+useSlots();
+
+withDefaults(defineProps<{ colorVariant?: "default" | "green" | "red" }>(), {
+  colorVariant: "default"
+});
 </script>
 
 <template>
-  <button class="button">
-    <div class="adornment-container">
-      <slot name="start-adornment"></slot>
-    </div>
-    <div class="button-content">
+  <button
+      :class="colorVariant === 'red'
+      ? 'bg-secondary-600 hover:bg-secondary-400'
+      : colorVariant === 'green'
+      ? 'bg-success-500 hover:bg-success-200'
+      : 'bg-primary-600 hover:bg-primary-400 '"
+      class="text-white
+  flex items-center gap-4 px-4 py-2
+  border-none rounded-full
+  cursor-pointer
+  transition
+">
+    <slot name="start-adornment"></slot>
+    <p class="flex-1 font-bold">
       <slot></slot>
-    </div>
-    <div class="adornment-container">
-      <slot name="end-adornment"></slot>
-    </div>
+    </p>
+    <slot name="end-adornment"></slot>
   </button>
 </template>
-
-<style scoped>
-.button {
-  display: flex;
-  border-radius: 24px;
-  border: none;
-  color: white;
-  background-color: var(--primary-60);
-  padding: 0.5rem 1rem;
-  gap: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.button:hover {
-  background-color: var(--primary-40);
-}
-
-.button-content {
-  flex: 1;
-  color: white;
-  font-weight: bolder;
-}
-</style>

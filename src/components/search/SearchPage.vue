@@ -2,7 +2,7 @@
 import {reactive, ref, watch} from "vue";
 import useCoursesStore, {Course} from "@/store/courses.ts";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
-import {faFilter} from "@fortawesome/free-solid-svg-icons";
+import {faFilter, faSpinner} from "@fortawesome/free-solid-svg-icons";
 import OpalButton from "@/components/shared/OpalButton.vue";
 import {useRoute} from "vue-router";
 import OpalVerticalPage from "@/components/shared/OpalVerticalPage.vue";
@@ -39,15 +39,14 @@ watch(() => route.query.value, loadAvailableCourses, {immediate: true});
     </template>
 
     <template #default>
-      <p v-if="loading">Loading...</p>
+      <div v-if="loading" class="w-full h-full flex justify-center items-center">
+        <font-awesome-icon :icon="faSpinner" class="text-primary-600 animate-spin" size="2xl"/>
+      </div>
       <section v-if="serverData.courses.length > 0" class="flex flex-wrap gap-4 p-4">
         <CourseCard
             v-for="course in serverData.courses"
-            :name="course.name"
+            :course="course"
             :key="course.id"
-            :id="course.id"
-            :desc="course.desc"
-            :author="course.author"
         >
           <template #actions>
             <OpalButton>

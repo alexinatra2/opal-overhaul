@@ -5,10 +5,11 @@ import useCoursesStore from "@/store/courses.ts";
 import {useRoute} from "vue-router";
 import FileTree from "@/components/course/FileTree.vue";
 import CourseContent from "@/components/course/CourseContent.vue";
+import {computed} from "vue";
 
 const route = useRoute();
 const courseStore = useCoursesStore()
-const course = courseStore.courses.find((c) => c.id === route.params.id);
+const course = computed(() => courseStore.courses.find((c) => c.id === route.params.id));
 </script>
 
 <template>

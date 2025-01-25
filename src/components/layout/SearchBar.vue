@@ -48,8 +48,8 @@ const submitSearch = () => {
 }
 
 .search-bar:focus-within {
-  border: 2px solid var(--primary-40);
-  color: var(--primary-40);
+  border: 2px solid var(--color-primary-400);
+  color: var(--color-primary-400);
 }
 
 .search-input {
@@ -62,6 +62,6 @@ const submitSearch = () => {
 }
 
 ::placeholder {
-  color: var(--gray-50);
+  color: var(--color-gray-500);
 }
 </style>

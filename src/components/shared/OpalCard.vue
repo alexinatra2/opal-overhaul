@@ -5,35 +5,13 @@ const slots = useSlots();
 </script>
 
 <template>
-  <div class="card">
-    <div v-if="slots.header" class="card-header">
+  <div class="flex flex-col items-stretch gap-4 rounded-2xl p-4 bg-white shadow-xl">
+    <div v-if="slots.header" class="text-2xl font-bold">
       <slot name="header"></slot>
     </div>
 
-    <div class="card-body">
-      <slot></slot>
-    </div>
-
-    <div v-if="slots.actions" class="card-actions">
-      <slot name="actions"></slot>
-    </div>
+    <slot></slot>
+    
+    <slot name="actions" v-if="slots.actions"></slot>
   </div>
 </template>
-
-<style scoped>
-.card {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  gap: 2rem;
-  border-radius: 12px;
-  padding: 2rem;
-  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
-  background: white;
-}
-
-.card-header {
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-</style>

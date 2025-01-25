@@ -17,7 +17,7 @@
   position: sticky;
   bottom: 0;
   width: 100%;
-  background-color: var(--gray-70);
+  background-color: var(--color-gray-700);
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
   font-size: 0.75rem;
 }
@@ -38,6 +38,6 @@
 
 .footer-link:hover {
   text-decoration: underline;
-  color: var(--primary-40);
+  color: var(--color-primary-400);
 }
 </style>
