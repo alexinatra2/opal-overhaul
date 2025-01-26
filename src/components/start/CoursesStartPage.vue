@@ -36,15 +36,7 @@ const toggleSortDirection = () => {
           v-for="course in sortedCourses"
           :course="course"
           :key="course.id"
-      >
-        <template #actions>
-          <OpalButton>
-            <router-link :to="`/courses/${course.id}`">
-              Zur Kursseite
-            </router-link>
-          </OpalButton>
-        </template>
-      </CourseCard>
+      />
     </section>
   </OpalVerticalPage>
 </template>
