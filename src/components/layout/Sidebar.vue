@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import useCoursesStore from "@/store/courses";
 import SidebarCourse from "./SidebarCourse.vue";
+import {storeToRefs} from "pinia";
 
 defineProps<{ isOpen: boolean }>();
 const emit = defineEmits(["close"]);
 const coursesStore = useCoursesStore();
+const {enrolledCourses} = storeToRefs(coursesStore);
 </script>
 
 <template>
@@ -12,7 +14,7 @@ const coursesStore = useCoursesStore();
   <aside class="drawer" :class="{ open: isOpen }">
     <nav class="nav">
       <ul class="course-list">
-        <li v-for="course in coursesStore.courses" :key="course.id">
+        <li v-for="course in enrolledCourses" :key="course.id">
           <SidebarCourse :name="course.name" :id="course.id"/>
         </li>
       </ul>

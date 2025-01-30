@@ -11,6 +11,7 @@ import useCoursesStore from "@/store/courses.ts";
 const sortAscending = ref(true);
 const {enrolledCourses} = storeToRefs(useCoursesStore());
 const sortedCourses = computed(() => enrolledCourses
+    .value
     .toSorted((course1, course2) => {
       return sortAscending.value ? course1.name < course2.name : course1.name > course2.namea;
     }));

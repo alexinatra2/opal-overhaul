@@ -1,5 +1,5 @@
 import {defineStore} from "pinia";
-import {ref} from "vue";
+import {computed, ref} from "vue";
 
 export type CourseNode = {
     title: string;
@@ -104,9 +104,9 @@ const useCoursesStore = defineStore("courses", () => {
         return false;
     }
 
-    const enrolledCourses = () => {
+    const enrolledCourses = computed(() => {
         return courses.value.filter((c) => enrolled.value.includes(c.id));
-    }
+    });
 
     return {
         courses,
