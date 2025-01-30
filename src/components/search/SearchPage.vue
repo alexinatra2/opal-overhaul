@@ -2,11 +2,12 @@
 import {reactive, ref, watch} from "vue";
 import useCoursesStore, {Course} from "@/store/courses.ts";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
-import {faFilter, faSpinner} from "@fortawesome/free-solid-svg-icons";
+import {faSpinner} from "@fortawesome/free-solid-svg-icons";
 import OpalButton from "@/components/shared/OpalButton.vue";
 import {useRoute} from "vue-router";
 import OpalVerticalPage from "@/components/shared/OpalVerticalPage.vue";
 import CourseCard from "@/components/shared/CourseCard.vue";
+import Filter from "@/components/search/Filter.vue";
 
 const coursesStore = useCoursesStore();
 
@@ -30,12 +31,7 @@ watch(() => route.query.value, loadAvailableCourses, {immediate: true});
     </template>
 
     <template #headerContent>
-      <OpalButton>
-        <template #start-adornment>
-          <font-awesome-icon :icon="faFilter"/>
-        </template>
-        Filtern
-      </OpalButton>
+      <Filter/>
     </template>
 
     <template #default>
