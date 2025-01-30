@@ -8,6 +8,7 @@ import {useRoute} from "vue-router";
 import OpalVerticalPage from "@/components/shared/OpalVerticalPage.vue";
 import CourseCard from "@/components/shared/CourseCard.vue";
 import Filter from "@/components/search/Filter.vue";
+import OpalTransitionGroup from "@/components/shared/OpalTransitionGroup.vue";
 
 const coursesStore = useCoursesStore();
 
@@ -34,25 +35,31 @@ watch(() => route.query.value, loadAvailableCourses, {immediate: true});
       <Filter/>
     </template>
 
-    <template #default>
-      <div v-if="loading" class="w-full h-full flex justify-center items-center">
-        <font-awesome-icon :icon="faSpinner" class="text-primary-600 animate-spin" size="2xl"/>
-      </div>
-      <section v-if="serverData.courses.length > 0" class="flex flex-wrap gap-4 p-4">
-        <CourseCard
-            v-for="course in serverData.courses"
-            :course="course"
-            :key="course.id"
-        >
-          <template #actions>
-            <OpalButton>
-              <router-link :to="`/courses/${course.id}`">
-                Zur Kursseite
-              </router-link>
-            </OpalButton>
-          </template>
-        </CourseCard>
-      </section>
-    </template>
+    <div class="relative">
+
+      <template #default>
+        <div v-if="loading" class="absolute inset-0 flex justify-center items-center">
+          <font-awesome-icon :icon="faSpinner" class="text-primary-600 animate-spin z-10" size="2xl"/>
+          <div class="w-full h-full bg-gray-400 backdrop-opacity-15"/>
+        </div>
+        <section class="flex flex-wrap gap-4 p-4">
+          <OpalTransitionGroup>
+            <CourseCard
+                v-for="course in serverData.courses"
+                :course="course"
+                :key="course.id"
+            >
+              <template #actions>
+                <OpalButton>
+                  <router-link :to="`/courses/${course.id}`">
+                    Zur Kursseite
+                  </router-link>
+                </OpalButton>
+              </template>
+            </CourseCard>
+          </OpalTransitionGroup>
+        </section>
+      </template>
+    </div>
   </OpalVerticalPage>
 </template>
