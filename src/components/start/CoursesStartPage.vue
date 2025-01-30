@@ -4,14 +4,16 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {faSortAlphaAsc, faSortAlphaDesc} from "@fortawesome/free-solid-svg-icons";
 import OpalVerticalPage from "@/components/shared/OpalVerticalPage.vue";
 import CourseCard from "@/components/shared/CourseCard.vue";
-import useCoursesStore from "@/store/courses.ts";
 import {computed, ref} from "vue";
+import {storeToRefs} from "pinia";
+import useCoursesStore from "@/store/courses.ts";
 
 const sortAscending = ref(true);
-const courseData = useCoursesStore();
-const sortedCourses = computed(() => courseData.courses.toSorted((course1, course2) => {
-  return sortAscending.value ? course1.name < course2.name : course1.name > course2.namea;
-}));
+const {enrolledCourses} = storeToRefs(useCoursesStore());
+const sortedCourses = computed(() => enrolledCourses
+    .toSorted((course1, course2) => {
+      return sortAscending.value ? course1.name < course2.name : course1.name > course2.namea;
+    }));
 
 const toggleSortDirection = () => {
   sortAscending.value = !sortAscending.value;

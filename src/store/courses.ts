@@ -103,11 +103,17 @@ const useCoursesStore = defineStore("courses", () => {
         }
         return false;
     }
+
+    const enrolledCourses = () => {
+        return courses.value.filter((c) => enrolled.value.includes(c.id));
+    }
+
     return {
         courses,
         enrolled,
+        enrolledCourses,
         toggleEnrolment,
-    }
+    } as const;
 });
 
 export default useCoursesStore;
