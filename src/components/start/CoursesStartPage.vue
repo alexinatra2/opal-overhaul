@@ -7,6 +7,7 @@ import CourseCard from "@/components/shared/CourseCard.vue";
 import {computed, ref} from "vue";
 import {storeToRefs} from "pinia";
 import useCoursesStore from "@/store/courses.ts";
+import OpalTransitionGroup from "@/components/shared/OpalTransitionGroup.vue";
 
 const sortAscending = ref(true);
 const {enrolledCourses} = storeToRefs(useCoursesStore());
@@ -35,14 +36,13 @@ const toggleSortDirection = () => {
       </OpalButton>
     </template>
     <section class="flex flex-wrap gap-4 p-4">
-      <CourseCard
-          v-for="course in sortedCourses"
-          :course="course"
-          :key="course.id"
-      />
+      <OpalTransitionGroup>
+        <CourseCard
+            v-for="course in sortedCourses"
+            :course="course"
+            :key="course.id"
+        />
+      </OpalTransitionGroup>
     </section>
   </OpalVerticalPage>
 </template>
-
-<style scoped>
-</style>

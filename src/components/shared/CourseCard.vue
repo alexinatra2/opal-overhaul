@@ -13,7 +13,7 @@ const isEnrolled = computed(() => coursesStore.enrolled.includes(course.id));
 
 <template>
   <router-link :to="`/courses/${course.id}`">
-    <OpalCard class="hover:bg-primary-400 transition">
+    <OpalCard class="transition">
       <template #header>
         <div class="relative w-full flex justify-between">
           <div class="text-left">
