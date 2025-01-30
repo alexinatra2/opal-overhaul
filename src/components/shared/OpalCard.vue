@@ -11,7 +11,9 @@ const slots = useSlots();
     </div>
 
     <slot></slot>
-    
-    <slot name="actions" v-if="slots.actions"></slot>
+
+    <div class="flex justify-end items-center">
+      <slot name="actions" v-if="slots.actions"></slot>
+    </div>
   </div>
 </template>
