@@ -42,6 +42,3 @@ const courseData = useCoursesStore();
     </section>
   </OpalVerticalPage>
 </template>
-
-<style scoped>
-</style>
