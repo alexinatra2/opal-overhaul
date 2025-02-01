@@ -6,13 +6,13 @@ import {faPlus} from "@fortawesome/free-solid-svg-icons";
 </script>
 
 <template>
-  <div class="centered">
+  <div class="flex justify-center items-center h-full">
     <Card>
       <template #header>
         <img src="/logo.png" alt="Logo" class="logo scale-animate" height="80px"/>
       </template>
 
-      <p class="introduction">
+      <p class="max-w-xs text-left break-words">
         Das ist Text, der erklärt, was OPAL ist und wie man seinen ersten Kurs
         hinzufügt. Das ist Text, der erklärt, was OPAL ist und wie man seinen
         ersten Kurs hinzufügt.
@@ -32,17 +32,4 @@ import {faPlus} from "@fortawesome/free-solid-svg-icons";
   </div>
 </template>
 
-<style scoped>
-.centered {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
 
-.introduction {
-  max-width: 300px;
-  text-align: left;
-  text-wrap: pretty;
-}
-</style>
