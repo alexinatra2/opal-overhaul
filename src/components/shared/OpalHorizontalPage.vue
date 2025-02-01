@@ -19,7 +19,3 @@ const slots = useSlots();
     </div>
   </div>
 </template>
-
-<style scoped>
-
-</style>
