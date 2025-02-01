@@ -16,52 +16,20 @@ const submitSearch = () => {
 
 <template>
   <form @submit.prevent="submitSearch">
-    <div class="search-bar">
+    <div class="flex items-center bg-gray-100 px-4 py-1 rounded-full w-72 border-2 border-transparent focus-within:border-primary-400 transition">
       <input
-          type="text"
-          v-model="searchQuery"
-          placeholder="Suche"
-          class="search-input"
-          @keydown.enter="submitSearch"
+        type="text"
+        v-model="searchQuery"
+        placeholder="Suche"
+        class="flex-1 bg-transparent outline-none text-gray-700 text-base"
+        @keydown.enter="submitSearch"
       />
-      <router-link :to="{ name: 'search', query: { value: searchQuery }}">
-        <font-awesome-icon :icon="faSearch"/>
+      <router-link :to="{ name: 'search', query: { value: searchQuery } }">
+        <font-awesome-icon :icon="faSearch" class="text-gray-500 transition-colors hover:text-primary-400" />
       </router-link>
     </div>
   </form>
 </template>
 
-<style scoped>
-.search-bar {
-  display: flex;
-  align-items: center;
-  background-color: var(--background-light);
-  padding: 0.25rem 1rem;
-  border-radius: 2rem;
-  width: 300px;
-  transition: border 0.3s ease;
-  border: 2px solid transparent;
-}
 
-.search-bar svg {
-  transition: color 0.3s ease;
-}
 
-.search-bar:focus-within {
-  border: 2px solid var(--primary-40);
-  color: var(--primary-40);
-}
-
-.search-input {
-  outline: none;
-  border: none;
-  background: none;
-  color: var(--text-light);
-  flex: 1;
-  font-size: 1rem;
-}
-
-::placeholder {
-  color: var(--gray-50);
-}
-</style>
