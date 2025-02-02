@@ -10,10 +10,12 @@ const {enrolledCourses} = storeToRefs(coursesStore);
 </script>
 
 <template>
-  <div class="backdrop" v-if="isOpen" @click="emit('close')"></div>
-  <aside class="drawer" :class="{ open: isOpen }">
-    <nav class="nav">
-      <ul class="course-list">
+  <div class="fixed inset-0 bg-black opacity-50 z-50" v-if="isOpen" @click="emit('close')"></div>
+  <aside
+      class="fixed inset-y-0 left-0 w-72 bg-primary-600 ease-in-out transition-transform transform -translate-x-full z-200"
+      :class="{ 'translate-x-0': isOpen }">
+    <nav>
+      <ul class="w-full p-0 flex flex-col list-none">
         <li v-for="course in enrolledCourses" :key="course.id">
           <SidebarCourse :name="course.name" :id="course.id"/>
         </li>
@@ -22,34 +24,4 @@ const {enrolledCourses} = storeToRefs(coursesStore);
   </aside>
 </template>
 
-<style scoped>
-.drawer {
-  position: absolute;
-  inset-block: 0;
-  left: -300px;
-  width: 300px;
-  z-index: 200;
-  background: var(--color-primary-600);
-  transition: left 0.3s ease;
-}
 
-.drawer.open {
-  left: 0;
-}
-
-.course-list {
-  width: 100%;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  list-style: none;
-}
-
-.backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 50;
-  background: rgba(0, 0, 0, 0.5);
-}
-</style>

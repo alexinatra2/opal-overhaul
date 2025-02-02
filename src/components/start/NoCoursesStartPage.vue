@@ -6,7 +6,7 @@ import {faPlus} from "@fortawesome/free-solid-svg-icons";
 </script>
 
 <template>
-  <div class="centered">
+  <div class="flex justify-center items-center h-full">
     <Card>
       <img src="/logo.png" alt="Logo" class="h-24 logo scale-animate self-center"/>
       <p class="introduction">
@@ -27,17 +27,4 @@ import {faPlus} from "@fortawesome/free-solid-svg-icons";
   </div>
 </template>
 
-<style scoped>
-.centered {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-}
 
-.introduction {
-  max-width: 300px;
-  text-align: left;
-  text-wrap: pretty;
-}
-</style>

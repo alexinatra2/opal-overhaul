@@ -8,64 +8,27 @@ const uiStore = useUiStore();
 </script>
 
 <template>
-  <header class="header">
-    <div class="header-content">
-      <div class="group">
-        <button class="icon scale-animate" @click="uiStore.toggleSidebar">
-          <font-awesome-icon :icon="faBars"/>
+  <header class="sticky top-0 w-full z-50 bg-gray-700 shadow-md">
+    <div class="flex items-center justify-between p-4">
+      <div class="flex items-center gap-x-4">
+        <button class="bg-transparent border-none text-xl text-gray-300 transition-transform transform hover:scale-110"
+                @click="uiStore.toggleSidebar">
+          <font-awesome-icon :icon="faBars" class="text-white cursor-pointer"/>
         </button>
         <router-link to="/">
-          <img src="/logo.png" alt="Logo" class="h-8 logo scale-animate"/>
+          <img src="/logo.png" alt="Logo" class="h-8 transition-transform transform hover:scale-110"/>
         </router-link>
       </div>
-      <div class="group">
+      <div class="flex items-center gap-x-4">
         <SearchBar/>
-        <button class="icon scale-animate">
-          <font-awesome-icon :icon="faUser"/>
+        <button class="bg-transparent border-none text-xl text-gray-300 transition-transform transform hover:scale-110">
+          <font-awesome-icon :icon="faUser" class="text-white cursor-pointer"/>
         </button>
-        <button class="icon scale-animate">
-          <font-awesome-icon :icon="faCog"/>
+        <button class="bg-transparent border-none text-xl text-gray-300 transition-transform transform hover:scale-110">
+          <font-awesome-icon :icon="faCog" class="text-white cursor-pointer"/>
         </button>
       </div>
     </div>
   </header>
 </template>
 
-<style scoped>
-.header {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 100;
-}
-
-.header-content {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 1rem;
-  background-color: var(--color-gray-700);
-}
-
-.group {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.icon {
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--text-dark);
-}
-
-.scale-animate {
-  transition: transform 0.2s ease-in-out;
-}
-
-.scale-animate:hover {
-  transform: scale(1.1);
-}
-</style>

@@ -5,8 +5,8 @@ const slots = useSlots();
 </script>
 
 <template>
-  <div class="flex flex-col items-stretch gap-4 rounded-2xl p-4 bg-white shadow-xl">
-    <div v-if="slots.header" class="text-2xl font-bold">
+  <div class="flex flex-col items-stretch gap-8 rounded-xl p-8 shadow-md bg-white">
+    <div v-if="slots.header" class="text-lg font-bold">
       <slot name="header"></slot>
     </div>
 
@@ -17,3 +17,6 @@ const slots = useSlots();
     </div>
   </div>
 </template>
+
+
+
