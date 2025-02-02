@@ -35,31 +35,28 @@ watch(() => route.query.value, loadAvailableCourses, {immediate: true});
       <Filter/>
     </template>
 
-    <div class="relative">
-
-      <template #default>
-        <div v-if="loading" class="absolute inset-0 flex justify-center items-center">
-          <font-awesome-icon :icon="faSpinner" class="text-primary-600 animate-spin z-10" size="2xl"/>
-          <div class="w-full h-full bg-gray-400 backdrop-opacity-15"/>
-        </div>
-        <section class="flex flex-wrap gap-4 p-4">
-          <OpalTransitionGroup>
-            <CourseCard
-                v-for="course in serverData.courses"
-                :course="course"
-                :key="course.id"
-            >
-              <template #actions>
-                <OpalButton>
-                  <router-link :to="`/courses/${course.id}`">
-                    Zur Kursseite
-                  </router-link>
-                </OpalButton>
-              </template>
-            </CourseCard>
-          </OpalTransitionGroup>
-        </section>
-      </template>
+    <div class="relative w-full h-full">
+      <div v-if="loading" class="absolute inset-0 flex justify-center items-center">
+        <font-awesome-icon :icon="faSpinner" class="text-primary-600 animate-spin z-10" size="2xl"/>
+        <div class="absolute inset-0 bg-gray-200 backdrop-opacity-10"/>
+      </div>
+      <section class="flex flex-wrap gap-4 p-4">
+        <OpalTransitionGroup>
+          <CourseCard
+              v-for="course in serverData.courses"
+              :course="course"
+              :key="course.id"
+          >
+            <template #actions>
+              <OpalButton>
+                <router-link :to="`/courses/${course.id}`">
+                  Zur Kursseite
+                </router-link>
+              </OpalButton>
+            </template>
+          </CourseCard>
+        </OpalTransitionGroup>
+      </section>
     </div>
   </OpalVerticalPage>
 </template>
