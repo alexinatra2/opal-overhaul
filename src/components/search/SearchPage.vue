@@ -46,6 +46,7 @@ watch(() => route.query.value, loadAvailableCourses, {immediate: true});
               v-for="course in serverData.courses"
               :course="course"
               :key="course.id"
+              show-enrolment-status
           >
             <template #actions>
               <OpalButton>
