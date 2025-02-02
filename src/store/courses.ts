@@ -247,7 +247,14 @@ const initialCourses = [
     }
 ];
 
-const initialEnrolled: string[] = [];
+const initialEnrolled: string[] = [
+    "I-380",
+    "I-360",
+    "E-803",
+    "I-350",
+    "I-310",
+    "I-001"
+];
 
 const useCoursesStore = defineStore("courses", () => {
     const courses = ref(initialCourses);
