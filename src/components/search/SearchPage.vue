@@ -7,7 +7,7 @@ import OpalButton from "@/components/shared/OpalButton.vue";
 import {useRoute} from "vue-router";
 import OpalVerticalPage from "@/components/shared/OpalVerticalPage.vue";
 import CourseCard from "@/components/shared/CourseCard.vue";
-import Filter from "@/components/search/Filter.vue";
+import FilterPanel from "@/components/search/FilterPanel.vue";
 import OpalTransitionGroup from "@/components/shared/OpalTransitionGroup.vue";
 
 const coursesStore = useCoursesStore();
@@ -32,7 +32,7 @@ watch(() => route.query.value, loadAvailableCourses, {immediate: true});
     </template>
 
     <template #headerContent>
-      <Filter/>
+      <FilterPanel/>
     </template>
 
     <div class="relative w-full h-full">
