@@ -8,26 +8,21 @@ import {faPlus} from "@fortawesome/free-solid-svg-icons";
 <template>
   <div class="centered">
     <Card>
-      <template #header>
-        <img src="/logo.png" alt="Logo" class="logo scale-animate" height="80px"/>
-      </template>
-
+      <img src="/logo.png" alt="Logo" class="h-24 logo scale-animate self-center"/>
       <p class="introduction">
         Das ist Text, der erklärt, was OPAL ist und wie man seinen ersten Kurs
         hinzufügt. Das ist Text, der erklärt, was OPAL ist und wie man seinen
         ersten Kurs hinzufügt.
       </p>
 
-      <template #actions>
-        <router-link to="/search">
-          <Button>
-            <template #start-adornment>
-              <font-awesome-icon :icon="faPlus"/>
-            </template>
-            Ersten Kurs hinzufügen
-          </Button>
-        </router-link>
-      </template>
+      <router-link to="/search" class="self-center">
+        <Button>
+          <template #start-adornment>
+            <font-awesome-icon :icon="faPlus"/>
+          </template>
+          Ersten Kurs hinzufügen
+        </Button>
+      </router-link>
     </Card>
   </div>
 </template>

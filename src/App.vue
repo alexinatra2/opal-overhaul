@@ -12,9 +12,11 @@ const uiStore = useUiStore();
     <Header @toggleDrawer="uiStore.toggleSidebar"/>
     <main class="main-content">
       <Sidebar :isOpen="uiStore.sidebarOpen" @close="uiStore.toggleSidebar"/>
-      <Transition name="fade" mode="out-in">
-        <router-view/>
-      </Transition>
+      <router-view v-slot="{ Component }">
+        <transition name="fade" mode="out-in">
+          <component :is="Component"/>
+        </transition>
+      </router-view>
     </main>
     <Footer/>
   </div>
@@ -34,12 +36,13 @@ const uiStore = useUiStore();
   overflow-y: auto;
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.3s ease-in-out;
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
-.fade-enter, .fade-leave-to /* 'to' is required for Vue 3 */
-{
-  opacity: 0;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease-in-out;
 }
 </style>

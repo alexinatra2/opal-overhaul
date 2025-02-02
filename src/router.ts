@@ -10,7 +10,7 @@ const routes: RouterOptions["routes"] = [
     {
         path: "/", redirect: _to => {
             const coursesStore = useCoursesStore();
-            if (coursesStore.courses.length > 0) {
+            if (coursesStore.enrolled.length > 0) {
                 return "/courses";
             } else {
                 return "/no-courses";
@@ -26,14 +26,6 @@ const routes: RouterOptions["routes"] = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
-});
-
-// Navigation Guard to Redirect Based on CoursePage Availability
-router.beforeEach((to, _from, next) => {
-    if (to.path === "/") {
-    } else {
-        next();
-    }
 });
 
 router.afterEach(() => {

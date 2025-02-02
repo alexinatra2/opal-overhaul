@@ -4,14 +4,18 @@ import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {faSortAlphaAsc, faSortAlphaDesc} from "@fortawesome/free-solid-svg-icons";
 import OpalVerticalPage from "@/components/shared/OpalVerticalPage.vue";
 import CourseCard from "@/components/shared/CourseCard.vue";
-import useCoursesStore from "@/store/courses.ts";
 import {computed, ref} from "vue";
+import {storeToRefs} from "pinia";
+import useCoursesStore from "@/store/courses.ts";
+import OpalTransitionGroup from "@/components/shared/OpalTransitionGroup.vue";
 
 const sortAscending = ref(true);
-const courseData = useCoursesStore();
-const sortedCourses = computed(() => courseData.courses.toSorted((course1, course2) => {
-  return sortAscending.value ? course1.name < course2.name : course1.name > course2.namea;
-}));
+const {enrolledCourses} = storeToRefs(useCoursesStore());
+const sortedCourses = computed(() => enrolledCourses
+    .value
+    .toSorted((course1, course2) => {
+      return sortAscending.value ? course1.name < course2.name : course1.name > course2.namea;
+    }));
 
 const toggleSortDirection = () => {
   sortAscending.value = !sortAscending.value;
@@ -32,22 +36,13 @@ const toggleSortDirection = () => {
       </OpalButton>
     </template>
     <section class="flex flex-wrap gap-4 p-4">
-      <CourseCard
-          v-for="course in sortedCourses"
-          :course="course"
-          :key="course.id"
-      >
-        <template #actions>
-          <OpalButton>
-            <router-link :to="`/courses/${course.id}`">
-              Zur Kursseite
-            </router-link>
-          </OpalButton>
-        </template>
-      </CourseCard>
+      <OpalTransitionGroup>
+        <CourseCard
+            v-for="course in sortedCourses"
+            :course="course"
+            :key="course.id"
+        />
+      </OpalTransitionGroup>
     </section>
   </OpalVerticalPage>
 </template>
-
-<style scoped>
-</style>
