@@ -16,7 +16,7 @@ const loading = ref(true);
 const serverData = reactive<{ courses: Array<Course> }>({courses: []});
 
 const loadAvailableCourses = async () => {
-  await new Promise(resolve => setTimeout(resolve, 2000));
+  await new Promise(resolve => setTimeout(resolve, 500));
   serverData.courses = coursesStore.courses;
   loading.value = false;
 }
@@ -40,7 +40,7 @@ watch(() => route.query.value, loadAvailableCourses, {immediate: true});
         <font-awesome-icon :icon="faSpinner" class="text-primary-600 animate-spin z-10" size="2xl"/>
         <div class="absolute inset-0 bg-gray-200 backdrop-opacity-10"/>
       </div>
-      <section class="flex flex-wrap gap-4 p-4">
+      <section class="grid grid-cols-4 gap-4 p-4">
         <OpalTransitionGroup>
           <CourseCard
               v-for="course in serverData.courses"

@@ -35,7 +35,7 @@ const toggleSortDirection = () => {
         Sortieren
       </OpalButton>
     </template>
-    <section class="flex flex-wrap gap-4 p-4">
+    <section class="grid grid-cols-4 gap-4 p-4">
       <OpalTransitionGroup>
         <CourseCard
             v-for="course in sortedCourses"
