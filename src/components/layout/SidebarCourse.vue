@@ -21,9 +21,10 @@ watch(
 
 <template>
   <router-link :to="`/courses/${props.id}`" class="block">
-    <li class="w-72 flex items-center gap-4 p-4 text-gray-800 transition-colors hover:bg-primary-500" :class="{ 'bg-primary-400': active }">
+    <li class="w-72 flex items-center gap-4 p-4 text-white transition-colors hover:bg-primary-500"
+        :class="{ 'bg-primary-400': active }">
       <h4>{{ props.name }}</h4>
-      <p class="text-gray-400">{{ props.id }}</p>
+      <p class="text-gray-200">{{ props.id }}</p>
     </li>
   </router-link>
 </template>
