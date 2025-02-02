@@ -10,12 +10,10 @@ const slots = useSlots();
       <slot name="header"></slot>
     </div>
 
-    <div class="card-body">
-      <slot></slot>
-    </div>
+    <slot></slot>
 
-    <div v-if="slots.actions" class="card-actions">
-      <slot name="actions"></slot>
+    <div class="flex justify-end items-center">
+      <slot name="actions" v-if="slots.actions"></slot>
     </div>
   </div>
 </template>

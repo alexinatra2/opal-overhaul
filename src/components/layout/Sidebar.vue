@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import {defineEmits, defineProps} from "vue";
 import useCoursesStore from "@/store/courses";
 import SidebarCourse from "./SidebarCourse.vue";
+import {storeToRefs} from "pinia";
 
 defineProps<{ isOpen: boolean }>();
 const emit = defineEmits(["close"]);
 const coursesStore = useCoursesStore();
+const {enrolledCourses} = storeToRefs(coursesStore);
 </script>
 
 <template>
@@ -13,7 +14,7 @@ const coursesStore = useCoursesStore();
   <aside class="fixed inset-y-0 left-0 w-72 bg-primary-600 transition-transform transform -translate-x-full z-200" :class="{ 'translate-x-0': isOpen }">
     <nav>
       <ul class="w-full p-0 flex flex-col list-none">
-        <li v-for="course in coursesStore.courses" :key="course.id">
+        <li v-for="course in enrolledCourses" :key="course.id">
           <SidebarCourse :name="course.name" :id="course.id" />
         </li>
       </ul>
