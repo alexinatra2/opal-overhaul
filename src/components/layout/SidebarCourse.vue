@@ -17,9 +17,9 @@ watch(
 
 <template>
   <router-link :to="`/courses/${course.id}`" class="block">
-    <li class="w-72 grid grid-cols-6 grid-rows-1 p-4 text-white transition-colors hover:bg-primary-500"
+    <li class="w-72 grid grid-cols-3 grid-rows-1 gap-4 p-4 text-white transition-colors hover:bg-primary-500"
         :class="{ 'bg-primary-400': active }">
-      <h4 class="col-span-5">{{ course.name }}</h4>
+      <h4 class="col-span-2">{{ course.name }}</h4>
       <p class="text-gray-200">{{ course.id }}</p>
     </li>
   </router-link>
