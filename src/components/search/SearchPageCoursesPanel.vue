@@ -25,7 +25,7 @@ const searchQuery = useQueryRef("search");
 watch(() => searchQuery, loadAvailableCourses, {immediate: true});
 
 const relevantCourses = computed(() => {
-  return serverData.courses.filter((c) => JSON.stringify(c).includes(searchQuery.value));
+  return serverData.courses.filter((c) => JSON.stringify(c).toLowerCase().includes(searchQuery.value.toLowerCase()));
 });
 </script>
 
