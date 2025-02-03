@@ -6,22 +6,27 @@ import CourseCard from "@/components/shared/CourseCard.vue";
 import OpalButton from "@/components/shared/OpalButton.vue";
 import OpalTransitionGroup from "@/components/shared/OpalTransitionGroup.vue";
 import useCoursesStore, {Course} from "@/store/courses.ts";
-import {reactive, ref, watch} from "vue";
-import {useRoute} from "vue-router";
+import {computed, reactive, ref, watch} from "vue";
+import useQueryRef from "@/composables/useQueryRef.ts";
 
 const coursesStore = useCoursesStore();
 
 const loading = ref(true);
-const serverData = reactive<{ courses: Array<Course> }>({courses: []});
-
+const serverData = reactive({
+  courses: [] as Course[]
+});
 const loadAvailableCourses = async () => {
   await new Promise(resolve => setTimeout(resolve, 500));
   serverData.courses = coursesStore.courses;
   loading.value = false;
 }
 
-const route = useRoute();
-watch(() => route.query.value, loadAvailableCourses, {immediate: true});
+const searchQuery = useQueryRef("search");
+watch(() => searchQuery, loadAvailableCourses, {immediate: true});
+
+const relevantCourses = computed(() => {
+  return serverData.courses.filter((c) => c.name.includes(searchQuery.value));
+});
 </script>
 
 <template>
@@ -33,7 +38,7 @@ watch(() => route.query.value, loadAvailableCourses, {immediate: true});
     <section class="grid grid-cols-4 gap-4 p-4">
       <OpalTransitionGroup>
         <CourseCard
-            v-for="course in serverData.courses"
+            v-for="course in relevantCourses"
             :course="course"
             :key="course.id"
             show-enrolment-status
