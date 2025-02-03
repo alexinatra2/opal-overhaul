@@ -12,7 +12,7 @@ const uiStore = useUiStore();
     <Header @toggleDrawer="uiStore.toggleSidebar"/>
     <main class="main-content">
       <Sidebar :isOpen="uiStore.sidebarOpen" @close="uiStore.toggleSidebar"/>
-      <router-view v-slot="{ Component }">
+      <router-view v-slot="{ Component }" :key="$route.fullPath">
         <transition name="fade" mode="out-in">
           <component :is="Component"/>
         </transition>
