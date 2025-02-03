@@ -5,9 +5,9 @@ import {computed, reactive, ref} from "vue";
 import Filter from "@/components/search/Filter.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 
-const MAX_AMOUNT_FILTERS = 3;
+const MAX_AMOUNT_FILTERS = 2;
 
-const filters = reactive<string[]>([]);
+const filters = reactive([]);
 const addButtonDisabled = computed(() => filters.length >= MAX_AMOUNT_FILTERS);
 
 const addFilter = () => {
@@ -21,7 +21,7 @@ const removeFilter = (i: number) => {
 </script>
 
 <template>
-  <div class="flex justify-end items-center gap-4 w-5xl">
+  <div class="flex justify-end items-center gap-4">
     <Filter v-for="(filterRef, index) in filters" :ref="filterRef" @remove="removeFilter(index)"/>
     <button @click="addFilter"
             class="rounded-full w-10 text-white bg-primary-600 hover:bg-primary-400
