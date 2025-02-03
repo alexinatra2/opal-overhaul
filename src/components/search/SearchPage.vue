@@ -7,7 +7,7 @@ import OpalButton from "@/components/shared/OpalButton.vue";
 import {useRoute} from "vue-router";
 import OpalVerticalPage from "@/components/shared/OpalVerticalPage.vue";
 import CourseCard from "@/components/shared/CourseCard.vue";
-import Filter from "@/components/search/Filter.vue";
+import FilterPanel from "@/components/search/FilterPanel.vue";
 import OpalTransitionGroup from "@/components/shared/OpalTransitionGroup.vue";
 
 const coursesStore = useCoursesStore();
@@ -16,7 +16,7 @@ const loading = ref(true);
 const serverData = reactive<{ courses: Array<Course> }>({courses: []});
 
 const loadAvailableCourses = async () => {
-  await new Promise(resolve => setTimeout(resolve, 2000));
+  await new Promise(resolve => setTimeout(resolve, 500));
   serverData.courses = coursesStore.courses;
   loading.value = false;
 }
@@ -32,7 +32,7 @@ watch(() => route.query.value, loadAvailableCourses, {immediate: true});
     </template>
 
     <template #headerContent>
-      <Filter/>
+      <FilterPanel/>
     </template>
 
     <div class="relative w-full h-full">
@@ -40,12 +40,13 @@ watch(() => route.query.value, loadAvailableCourses, {immediate: true});
         <font-awesome-icon :icon="faSpinner" class="text-primary-600 animate-spin z-10" size="2xl"/>
         <div class="absolute inset-0 bg-gray-200 backdrop-opacity-10"/>
       </div>
-      <section class="flex flex-wrap gap-4 p-4">
+      <section class="grid grid-cols-4 gap-4 p-4">
         <OpalTransitionGroup>
           <CourseCard
               v-for="course in serverData.courses"
               :course="course"
               :key="course.id"
+              show-enrolment-status
           >
             <template #actions>
               <OpalButton>

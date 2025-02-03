@@ -6,20 +6,27 @@ import OpalVerticalPage from "@/components/shared/OpalVerticalPage.vue";
 import CourseCard from "@/components/shared/CourseCard.vue";
 import {computed, ref} from "vue";
 import {storeToRefs} from "pinia";
-import useCoursesStore from "@/store/courses.ts";
+import useCoursesStore, {Course} from "@/store/courses.ts";
 import OpalTransitionGroup from "@/components/shared/OpalTransitionGroup.vue";
 
 const sortAscending = ref(true);
 const {enrolledCourses} = storeToRefs(useCoursesStore());
-const sortedCourses = computed(() => enrolledCourses
-    .value
-    .toSorted((course1, course2) => {
-      return sortAscending.value ? course1.name < course2.name : course1.name > course2.namea;
-    }));
 
-const toggleSortDirection = () => {
-  sortAscending.value = !sortAscending.value;
+const comparatorForField = (field: keyof Course, ascending: boolean) => {
+  return (c1: Course, c2: Course) => {
+    if (c1[field] < c2[field]) {
+      return ascending ? -1 : 1;
+    }
+    if (c1[field] > c2[field]) {
+      return ascending ? 1 : -1;
+    }
+    return 0;
+  };
 }
+
+const sortedCourses = computed(() => {
+  return [...enrolledCourses.value].sort(comparatorForField("name", sortAscending.value));
+});
 </script>
 
 <template>
@@ -28,14 +35,14 @@ const toggleSortDirection = () => {
       Deine Kurse
     </template>
     <template #headerContent>
-      <OpalButton @click="toggleSortDirection">
+      <OpalButton @click="sortAscending = !sortAscending">
         <template #start-adornment>
           <font-awesome-icon :icon="sortAscending ? faSortAlphaAsc : faSortAlphaDesc"/>
         </template>
         Sortieren
       </OpalButton>
     </template>
-    <section class="flex flex-wrap gap-4 p-4">
+    <section class="grid grid-cols-4 gap-4 p-4">
       <OpalTransitionGroup>
         <CourseCard
             v-for="course in sortedCourses"

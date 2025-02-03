@@ -6,7 +6,7 @@ const slots = useSlots();
 
 <template>
   <div class="w-full h-full flex items-stretch">
-    <section class="min-w-[500px] flex flex-col items-stretch text-left bg-white gap-4">
+    <section class="min-w-[500px] flex flex-col items-stretch text-left bg-white gap-4 shadow-md">
       <h1 v-if="slots.headline" class="text-xl font-bold p-4">
         <slot name="headline"></slot>
       </h1>
